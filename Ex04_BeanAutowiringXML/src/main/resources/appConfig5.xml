@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 오늘은 자동으로 들어가게 해보자!!! -->
+	<bean id="name" class="java.lang.String">
+		<constructor-arg value="한사람"></constructor-arg>
+	</bean>
+	<bean class="kr.green.core.vo.License" id="license">
+		<constructor-arg value="경기 84-123456"></constructor-arg>
+	</bean>
+	
+	<bean id="driver1" class="kr.green.core.vo.Driver" autowire="default"></bean>
+	<bean id="driver2" class="kr.green.core.vo.Driver" autowire="no"></bean>
+	<bean id="driver3" class="kr.green.core.vo.Driver" autowire="constructor"></bean>
+</beans>

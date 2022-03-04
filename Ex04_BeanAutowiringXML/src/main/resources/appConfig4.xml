@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 오늘은 자동으로 들어가게 해보자!!! -->
+	<bean id="name" class="java.lang.String">
+		<constructor-arg value="한사람"></constructor-arg>
+	</bean>
+	<bean id="instrument" class="kr.green.core.vo.Instrument">
+		<property name="name" value="기타"></property>
+	</bean>
+	
+	<!-- 생성자를 이용한 자동 주입!! 반드시 의존객체를 받아주는 생성자가 필요하다. -->
+	<bean id="performer" class="kr.green.core.vo.Performer" autowire="constructor"></bean>
+</beans>

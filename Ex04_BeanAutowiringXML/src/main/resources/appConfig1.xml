@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 어제까지는 수동으로 등록했었다. -->
+	
+	<!-- 생성자를 이용한 의존 객체 주입 -->
+	<bean id="applicationUser"  class="kr.green.core.vo.ApplicationUser">
+		<constructor-arg value="사용자"></constructor-arg>
+	</bean>
+	
+	<!-- Setter를 이용한 의존 객체 주입 -->
+	<bean id="application" class="kr.green.core.vo.Application">
+		<property name="applicationUser" ref="applicationUser"></property>
+	</bean>
+</beans>
