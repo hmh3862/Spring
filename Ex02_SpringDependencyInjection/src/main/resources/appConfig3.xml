@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="rsaEncrytion" class="kr.green.core.vo.RSAEncrytion"></bean>
+	<bean id="md5Encrution" class="kr.green.core.vo.MD5Encrytion"></bean>
+	
+	<!-- Setter를 통한 주입 -->
+	<bean id="encrytionApp1" class="kr.green.core.vo.EncrytionApp">
+		<property name="encryption" ref="rsaEncrytion"></property>
+	</bean>
+	
+	<!-- 생성자를 통한 주입 -->
+	<bean id="encrytionApp2" class="kr.green.core.vo.EncrytionApp">
+		<constructor-arg ref="md5Encrution"></constructor-arg>
+	</bean>
+	
+</beans>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="encrytion" class="kr.green.core.vo.RSAEncrytion"></bean>
+	<bean id="messaging" class="kr.green.core.vo.EmailMessaging"></bean>
+	
+	<!-- 생성자를 이용한 주입 -->
+	<bean id="encrytionMessaging1" class="kr.green.core.vo.EncrytionMessaging">
+		<constructor-arg ref="encrytion"></constructor-arg>
+		<constructor-arg ref="messaging"></constructor-arg>
+	</bean>
+	
+	<!-- Setter를 이용한 주입 -->
+	<bean id="encrytionMessaging2" class="kr.green.core.vo.EncrytionMessaging">
+		<property name="encryption" ref="encrytion"></property>
+		<property name="messaging" ref="messaging"></property>
+	</bean>
+	
+	<!-- 생성자와 Setter를 이용한 주입 -->
+	<bean id="encrytionMessaging3" class="kr.green.core.vo.EncrytionMessaging">
+		<constructor-arg ref="messaging"></constructor-arg>
+		<property name="encryption" ref="encrytion"></property>
+	</bean>
+
+	<bean id="encrytionMessaging4" class="kr.green.core.vo.EncrytionMessaging">
+		<constructor-arg ref="encrytion"></constructor-arg>		
+		<property name="messaging" ref="messaging"></property>
+	</bean>
+	
+</beans>
