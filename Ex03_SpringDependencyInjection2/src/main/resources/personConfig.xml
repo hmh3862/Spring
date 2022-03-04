@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="address" class="kr.green.core.vo.AddressVO">
+		<constructor-arg value="성남" index="0"></constructor-arg>
+		<constructor-arg value="미금로 3가" index="1"></constructor-arg>
+		<constructor-arg value="조선인민민주의공화국" index="2"></constructor-arg>
+	</bean>
+	
+	<!-- 생성자를 통한 주입 : 타입이 모두 다르므로 순서에 상관없다. 타입을 명시해 주면 된다.  -->
+	<bean id="person1" class="kr.green.core.vo.PersonVO">
+		<constructor-arg value="한사람" type="java.lang.String"></constructor-arg>
+		<constructor-arg value="23" type="int"></constructor-arg>
+		<constructor-arg ref="address"></constructor-arg>
+	</bean>
+	<bean id="person2" class="kr.green.core.vo.PersonVO">
+		<constructor-arg ref="address"></constructor-arg>
+		<constructor-arg value="34" type="int"></constructor-arg>
+		<constructor-arg value="두사람" type="java.lang.String"></constructor-arg>
+	</bean>
+	<!-- 
+	     Setter를 이용한 주입 : 
+		 타입을 지정하지 않아도 상관없다. 
+		 왜? setter자체에 타입이 정해져 있다. 
+		 이름이 정해져서 순서도 상관없다 
+	-->
+	<bean id="person3" class="kr.green.core.vo.PersonVO">
+		<property name="name" value="천송이"></property>
+		<property name="age" value="33"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+	<bean id="person4" class="kr.green.core.vo.PersonVO">
+		<property name="age" value="18"></property>
+		<property name="address" ref="address"></property>
+		<property name="name" value="만송이"></property>
+	</bean>
+	<!-- 객체를 직접 주입도 가능하다. -->
+	<bean id="person5" class="kr.green.core.vo.PersonVO">
+		<property name="name" value="백송이"></property>
+		<property name="age" value="11"></property>
+		<property name="address">
+			<bean class="kr.green.core.vo.AddressVO">
+				<constructor-arg value="수원" index="0"></constructor-arg>			
+				<constructor-arg value="장안1로 47번길" index="1"></constructor-arg>			
+				<constructor-arg value="경기민국" index="2"></constructor-arg>			
+			</bean>
+		</property>
+	</bean>
+	
+</beans>

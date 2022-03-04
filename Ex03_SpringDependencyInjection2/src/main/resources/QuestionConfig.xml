@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 날짜 등록 -->
+	<bean id="date1" class="java.util.Date">
+		<constructor-arg value="01/01/2022"></constructor-arg>
+	</bean>
+	<!-- Answer 객체 등록 -->
+	<bean id="answer1" class="kr.green.core.vo.Answer">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="자바"></constructor-arg>
+		<constructor-arg value="11/03/22"></constructor-arg>
+	</bean>
+	<bean id="answer2" class="kr.green.core.vo.Answer">
+		<property name="id" value="2"></property>
+		<property name="answer" value="JSP"></property>
+		<property name="postedDate" ref="date1"></property>
+	</bean>
+	<!-- User객체 등록 -->
+	<bean id="user1" class="kr.green.core.vo.User">
+		<constructor-arg value="1" index="0"></constructor-arg>
+		<constructor-arg value="한사람" index="1"></constructor-arg>
+		<constructor-arg value="xxxx@xxx.xom" index="2"></constructor-arg>
+	</bean>
+	<bean id="user2" class="kr.green.core.vo.User">
+		<property name="id" value="2"></property>
+		<property name="name" value="두사람"></property>
+		<property name="email" value="2222@xxx.com"></property>
+	</bean>
+	<!-- Question 객체 등록 -->
+	<bean id="question1" class="kr.green.core.vo.Question">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="재미있는 과목은?"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key-ref="answer1" value-ref="user1"></entry>
+				<entry key-ref="answer2" value-ref="user2"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	
+	
+</beans>

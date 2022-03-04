@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- List에 주입하기 -->
+	<!-- 1. 생성자를 이용한 주입 -->
+	<bean id="listObject1" class="kr.green.core.vo.ListObject">
+		<constructor-arg>
+			<list>
+				<value>한놈1</value>
+				<value>한놈2</value>
+				<value>한놈3</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<!-- 2. Setter를 이용한 주입 -->
+	<bean id="listObject2" class="kr.green.core.vo.ListObject">
+		<property name="nameList">
+			<list>
+				<value>한놈1</value>
+				<value>한놈2</value>
+				<value>한놈3</value>
+			</list>
+		</property>
+	</bean>	
+	<!-- 3. 참조를 이용한 주입 -->
+	<bean id="nameList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>두식이</value>
+				<value>석삼</value>
+				<value>너구리</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="listObject3" class="kr.green.core.vo.ListObject">
+		<constructor-arg ref="nameList"/>
+	</bean>
+</beans>

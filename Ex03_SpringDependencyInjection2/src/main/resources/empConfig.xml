@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--  기본자료형의 주입을 공부하자!!!! -->
+	
+	<!-- 1. 기본 생성자를 호출하여 객체 생성 -->
+	<bean id="emp1" class="kr.green.core.vo.EmpVO"></bean>
+	
+	<!-- 2. 인수가 2개인 생성자를 이용한 기본 자료형 주입 -->
+	<!-- 타입을 사용하지 않아도 주입  -->
+	<bean id="emp2" class="kr.green.core.vo.EmpVO">
+		<constructor-arg>
+			<value>1001</value>
+		</constructor-arg>
+		<constructor-arg value="한사람"></constructor-arg>
+	</bean>
+	<!-- 타입을 지정해서 주입 순서가 상관없다. -->
+	<bean id="emp3" class="kr.green.core.vo.EmpVO">
+		<constructor-arg type="java.lang.String" value="한사람"></constructor-arg>
+		<constructor-arg type="int">
+			<value>1001</value>
+		</constructor-arg>
+	</bean>
+	<!-- 타입을 지정하지 않고 순서를 지정해서 주입 -->
+	<bean id="emp4" class="kr.green.core.vo.EmpVO">
+		<constructor-arg value="한사람" index="1"></constructor-arg>
+		<constructor-arg value="1002" index="0"></constructor-arg>
+	</bean>
+	<!-- 모두 지정하는 것이 제일 안전하다. -->
+	<bean id="emp5" class="kr.green.core.vo.EmpVO">
+		<constructor-arg value="1002" index="0" type="int"></constructor-arg>
+		<constructor-arg value="한사람" index="1" type="java.lang.String"></constructor-arg>
+	</bean>
+	
+	<!-- 3. Setter를 이용한 주입 -->
+	<bean id="emp6" class="kr.green.core.vo.EmpVO">
+		<property name="id">
+			<value>2001</value>
+		</property>
+		<property name="name" value="두사람"></property>
+	</bean>
+	<bean id="emp7" class="kr.green.core.vo.EmpVO">
+		<property name="name" value="두사람"></property>
+		<property name="id" value="2001"></property>
+	</bean>
+	
+	<!-- 4. 생성자와 Setter를 이용한 주입 -->
+	<bean id="emp8" class="kr.green.core.vo.EmpVO">
+		<constructor-arg value="세사람"></constructor-arg>
+		<property name="id" value="2001"></property>
+	</bean>	
+	<bean id="emp9" class="kr.green.core.vo.EmpVO">
+		<constructor-arg value="3001" type="int"></constructor-arg>
+		<property name="name" value="세사람"></property>
+	</bean>	
+	<bean id="emp10" class="kr.green.core.vo.EmpVO">
+		<property name="name" value="세사람"></property>
+		<constructor-arg value="3001" type="int"></constructor-arg>
+	</bean>	
+	
+	
+</beans>
