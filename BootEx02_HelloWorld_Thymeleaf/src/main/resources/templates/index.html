@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>thymeleaf를 이용한 출력</title>
+</head>
+<body>
+	<th:block th:each="data:${hobby}">
+		<h2 th:text="${data}"></h2>
+	</th:block>
+	
+	<hr />
+	
+	<h1 th:text="${title}"></h1>
+	
+	<hr />
+	
+	<div th:text="${map.name}"></div>
+	<div th:text="${map.age}"></div>
+	<div th:text="${map.gender}"></div>
+</body>
+</html>
