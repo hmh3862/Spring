@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- 지정 하위 패키지의 모든 클래스를 읽어서 설정을 해라(빈을 등록해라) -->
+	<context:component-scan base-package="kr.green.boot"></context:component-scan>
+	
+	<!--  프로퍼티 파일을 사용하는 방법 1 -->	
+	<!-- 
+	<bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+				<value>classpath:db.properties</value>
+			</list>
+		</property>
+	</bean>
+	 -->
+	<!--  프로퍼티 파일을 사용하는 방법 2: 네임스페이스에 util등록 -->	
+	<util:properties id="config" location="classpath:application.properties"></util:properties>
+	<util:properties id="db" location="classpath:db.properties"></util:properties>
+
+	<!--  프로퍼티 파일을 사용하는 방법 3: 네임스페이스에 context등록 -->
+	<context:property-placeholder location="classpath:config/*"/>	
+	
+	<!-- DB연결 -->
+	<bean id="dataSource1" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${o.driver}"></property>
+		<property name="url" value="${o.url}"></property>
+		<property name="username"  value="${o.username}"></property>
+		<property name="password" value="${o.password}"></property>
+	</bean>
+
+	<bean id="dataSource2" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="#{db['m.driver']}"></property>
+		<property name="url" value="#{db['m.url']}"></property>
+		<property name="username"  value="#{db['m.username']}"></property>
+		<property name="password" value="#{db['m.password']}"></property>
+	</bean>
+
+</beans>
