@@ -1,0 +1,40 @@
+2022-02-18 15:34:07,421 - ResourceManager.getResource() load exception
+org.apache.velocity.exception.VelocityException: Exception thrown processing Template /vetemplates/velocity_mailTemplate.html
+	at org.apache.velocity.Template.process(Template.java:164)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.mergeTemplate(VelocityEngine.java:343)
+	at org.apache.velocity.spring.VelocityEngineUtils.mergeTemplate(VelocityEngineUtils.java:70)
+	at org.apache.velocity.spring.VelocityEngineUtils.mergeTemplateIntoString(VelocityEngineUtils.java:108)
+	at org.apache.velocity.spring.VelocityEngineUtils.mergeTemplateIntoString(VelocityEngineUtils.java:89)
+	at kr.green.boot.service.MailServiceImpl.getVelocityTemplateContent(MailServiceImpl.java:118)
+	at kr.green.boot.service.MailServiceImpl$2.prepare(MailServiceImpl.java:76)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:375)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:366)
+	at kr.green.boot.service.MailServiceImpl.sendEmail(MailServiceImpl.java:62)
+	at kr.green.boot.app.MainApp.main(MainApp.java:16)
+Caused by: java.lang.NullPointerException: charsetName
+	at java.base/java.io.InputStreamReader.<init>(InputStreamReader.java:95)
+	at org.apache.velocity.Template.process(Template.java:133)
+	... 13 more
+2022-02-18 15:36:20,971 - ResourceManager.getResource() load exception
+org.apache.velocity.exception.VelocityException: Exception thrown processing Template /vetemplates/velocity_mailTemplate.html
+	at org.apache.velocity.Template.process(Template.java:164)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.mergeTemplate(VelocityEngine.java:343)
+	at org.apache.velocity.spring.VelocityEngineUtils.mergeTemplate(VelocityEngineUtils.java:70)
+	at org.apache.velocity.spring.VelocityEngineUtils.mergeTemplateIntoString(VelocityEngineUtils.java:108)
+	at org.apache.velocity.spring.VelocityEngineUtils.mergeTemplateIntoString(VelocityEngineUtils.java:89)
+	at kr.green.boot.service.MailServiceImpl.getVelocityTemplateContent(MailServiceImpl.java:118)
+	at kr.green.boot.service.MailServiceImpl$2.prepare(MailServiceImpl.java:76)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:375)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:366)
+	at kr.green.boot.service.MailServiceImpl.sendEmail(MailServiceImpl.java:62)
+	at kr.green.boot.app.MainApp.main(MainApp.java:16)
+Caused by: java.lang.NullPointerException: charsetName
+	at java.base/java.io.InputStreamReader.<init>(InputStreamReader.java:95)
+	at org.apache.velocity.Template.process(Template.java:133)
+	... 13 more
